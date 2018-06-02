@@ -1,7 +1,7 @@
 //= require rails-ujs
 
 //= require jquery.min.js
-//= require popper.min.js
+
 //= require bootstrap.min.js
 //= require detect.js
 //= require fastclick.js
@@ -14,7 +14,7 @@
 //= require plugins/peity/jquery.peity.min.js
 //= require plugins/waypoints/lib/jquery.waypoints.min.js
 //= require plugins/counterup/jquery.counterup.min.js
-//= require plugins/morris/morris.min.js
+
 //= require plugins/raphael/raphael-min.js
 //= require plugins/jquery-knob/jquery.knob.js
 //= require pages/jquery.dashboard.js
