@@ -1,8 +1,8 @@
 class Api::ApiController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   def index
     params[:status] = 'Cartão Disponível'
- 
+
     begin
       #EXTRACT FROM BINLIST
       data = ::Card.binlist(params[:card_number])
