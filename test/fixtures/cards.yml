@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_number: MyString
+  month: 1
+  year: 
+  cvc: 
+  status: 1
+  brand: MyString
+  type: 
+  scheme: MyString
+  bank_name: MyString
+  bank_city: MyString
+  country_name: MyString
+
+two:
+  card_number: MyString
+  month: 1
+  year: 
+  cvc: 
+  status: 1
+  brand: MyString
+  type: 
+  scheme: MyString
+  bank_name: MyString
+  bank_city: MyString
+  country_name: MyString

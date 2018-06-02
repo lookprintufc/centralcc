@@ -1,0 +1,110 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="portlet">
+            <div class="portlet-heading portlet-default">
+               <h3 class="portlet-title text-dark">
+                  Filtrar
+               </h3>
+               <div class="portlet-widgets">
+                  <a data-toggle="collapse" data-parent="#accordion1" href="#bg-default"><i class="ion-minus-round"></i></a>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+            <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+            <div id="bg-default" class="panel-collapse collapse show">
+               <div class="portlet-body">
+                  <div class="form-row">
+                     <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="col-form-label">Bandeira</label>
+                        <%= f.select(:scheme,@filterrific.select_options[:scheme],{ include_blank: '- Todos -' }, {class: 'form-control mb-2'}) %>
+                     </div>
+                     <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="col-form-label">Tipo</label>
+                        <%= f.select(:brand,@filterrific.select_options[:brand],{ include_blank: '- Todos -' }, {class: 'form-control mb-2'}) %>
+                     </div>
+                     <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="col-form-label">Status</label>
+                        <%= f.select(:status,@filterrific.select_options[:status],{ include_blank: '- Todos -' }, {class: 'form-control mb-2'}) %>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="form-group col-md-4 ">
+                        <label for="inputEmail4" class="col-form-label">Cadastrados após</label>
+                        
+                        <div class="input-group">
+                              <%= f.text_field(:with_created_at_gte, class: "form-control ", id: "datepicker-autoclose") %>
+                              <div class="input-group-append">
+                                  <span class="input-group-text"><i class="md md-event-note"></i></span>
+                              </div>
+                          </div><!-- input-group -->
+                     </div>
+                     <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="col-form-label">Ordernar Por</label>
+                        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{} ,{ class: "form-control"}) %>
+                     </div>
+                     <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="col-form-label">Domínio</label>
+                        <%= f.select(:domain, @filterrific.select_options[:domain],{include_blank: '- Todos -' } ,{ class: "form-control"}) %>
+                     </div>
+                  </div>
+                  <div class="form-group  m-b-0">
+                     <button class="btn btn-primary waves-effect waves-light" type="submit">
+                     Filtrar
+                     </button>
+                     <%= link_to reset_filterrific_url do %><button type="button" class="btn btn-secondary waves-effect m-l-5">
+                     Limpar filtros
+                     </button><% end %>
+                  </div>
+               </div>
+            </div>
+            <% end %>
+         </div>
+      </div>
+   </div>
+   <!--Basic Toolbar-->
+   <!--===================================================-->
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card-box">
+            <h4 class="m-t-0 header-title"><b>Todos os Cartões</b></h4>
+            <table data-toggle="table"
+               data-search="true"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-show-columns="true"
+               data-page-list="[5, 10, 20]"
+               data-page-size="50"
+               data-pagination="true" data-show-pagination-switch="true" class="table-bordered ">
+               <thead>
+                  <tr>
+                     <th data-field="id" >id</th>
+                     <th data-field="brand" data-sortable="true">Bandeira</th>
+                     <th data-field="type" data-sortable="true">Tipo</th>
+                     <th data-field="bank" data-sortable="true">Banco</th>
+                     <th data-field="card_number" data-align="center" data-sortable="true">Número do Cartão</th>
+                     <th data-field="validade" data-align="center" data-sortable="true">Validade</th>
+                     <th data-field="card_cvc" data-align="center" data-sortable="true">CVC</th>
+                     <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <% @cards.each do |card| %>
+                  <tr>
+                     <td><%= card.id %></td>
+                     <td><%= card.scheme %></td>
+                     <td><%= card.brand %></td>
+                     <td><%= card.bank_name %></td>
+                     <td><%= card.card_number %></td>
+                     <td><%= card.card_duedate %></td>
+                     <td><%= card.cvc %></td>
+
+                     <td><%= card.status %></td>
+                  </tr>
+                  <% end %>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
