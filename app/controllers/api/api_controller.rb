@@ -10,7 +10,7 @@ class Api::ApiController < ApplicationController
 
       params[:scheme] = data["scheme"]
       params[:brand] = (data["brand"].empty?) ? "Não definido" : data["brand"]
-      params[:bank_name] = (data["bank"]["name"] .empty?) ? "Não definido" : data["bank"]["name"] 
+      params[:bank_name] = (data["bank"].empty?) ? "Não definido" : data["bank"]["name"] 
       params[:country_name] = data["country"]["name"]
     rescue Exception => ex
       puts "Houve um erro: " + ex.message
