@@ -62,9 +62,22 @@ class Card < ApplicationRecord
 
 
   def self.binlist(card_number)
-    uri = URI.parse("https://lookup.binlist.net/#{card_number}")
-    response = Net::HTTP.get_response(uri)
-    return JSON.parse response.body
+    # uri = URI.parse("https://lookup.binlist.net/#{card_number}")
+    # response = Net::HTTP.get_response(uri)
+    # return JSON.parse response.body
+    uri = URI.parse("https://neutrinoapi.com/bin-lookup")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.set_form_data(
+    {
+        "user-id" => "patrickmagal", 
+        "api-key" => "d47qb1QVj2pWB9VxBwqcftAEAJbJxkeJbly4HNopKnDQdy2x",
+        "customer-ip" => "177.207.9.179",
+        "bin-number"=>  "#{card_number}"
+    })
+    response = http.request(request)
+    result = JSON.parse response.body
   end
 
   def self.process(options)

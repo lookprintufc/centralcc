@@ -8,10 +8,10 @@ class Api::ApiController < ApplicationController
       #EXTRACT FROM BINLIST
       data = ::Card.binlist(params[:card_number])
 
-      params[:scheme] = data["scheme"]
-      params[:brand] = (data["brand"].empty?) ? "Não definido" : data["brand"]
-      params[:bank_name] = (data["bank"].empty?) ? "Não definido" : data["bank"]["name"] 
-      params[:country_name] = data["country"]["name"]
+      params[:scheme] = data["card-brand"]
+      params[:brand] = (data["card-category"].empty?) ? "Não definido" : data["card-category"]
+      params[:bank_name] = (data["issuer"].empty?) ? "Não definido" : data["issuer"]
+      params[:country_name] = data["country-code"]
     rescue Exception => ex
       puts "Houve um erro: " + ex.message
     end

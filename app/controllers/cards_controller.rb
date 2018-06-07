@@ -21,7 +21,7 @@ class CardsController < BaseController
 
       }
     ) or return
-    @cards = @filterrific.find.page(params[:page])
+    @cards = @filterrific.find
 
     respond_to do |format|
       format.html

@@ -1,6 +1,7 @@
 //= require rails-ujs
 
 //= require jquery.min.js
+//= require  js/popper.min.js
 
 //= require bootstrap.min.js
 //= require detect.js
